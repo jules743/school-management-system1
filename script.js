@@ -4,34 +4,14 @@ const studentList = document.getElementById('student-list');
 const studentCount = document.getElementById('student-count');
 const studentSearch = document.getElementById('student-search');
 
-let students = [];
+// Load previously saved students
+let students = JSON.parse(
+  localStorage.getItem('schoolStudents') || '[]'
+);
 
-studentForm.addEventListener('submit', function(event) {
-  event.preventDefault();
-
-  const name = document.getElementById('student-name').value.trim();
-  const id = document.getElementById('student-id').value.trim();
-  const gender = document.getElementById('student-gender').value;
-  const studentClass = document.getElementById('student-class').value.trim();
-
-  if (students.some(student => student.id.toLowerCase() === id.toLowerCase())) {
-    alert('This Student ID already exists!');
-    return;
-  }
-
-  students.push({
-    name,
-    id,
-    gender,
-    studentClass
-  });
-
-  displayStudents();
-
-  studentForm.reset();
-
-  alert('Student registered successfully!');
-});
+function saveStudents() {
+  localStorage.setItem('schoolStudents', JSON.stringify(students));
+}
 
 function displayStudents() {
   const search = studentSearch.value.toLowerCase();
@@ -60,14 +40,31 @@ function displayStudents() {
   studentCount.textContent = students.length;
 }
 
+studentForm.addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  const name = document.getElementById('student-name').value.trim();
+  const id = document.getElementById('student-id').value.trim();
+  const gender = document.getElementById('student-gender').value;
+  const studentClass = document.getElementById('student-class').value.trim();
+
+  if (students.some(student =>
+    student.id.toLowerCase() === id.toLowerCase()
+  )) {
+    alert('This Student ID already exists!');
+    return;
+  }
+
+  students.push({ name, id, gender, studentClass });
+
+  saveStudents();
+  displayStudents();
+  studentForm.reset();
+
+  alert('Student registered successfully!');
+});
+
 studentSearch.addEventListener('input', displayStudents);
 
-// Highlight the selected navigation link
-document.querySelectorAll('.sidebar nav a').forEach(link => {
-  link.addEventListener('click', function() {
-    document.querySelectorAll('.sidebar nav a')
-      .forEach(item => item.classList.remove('active'));
-
-    this.classList.add('active');
-  });
-});
+// Display saved records when the page opens
+displayStudents();

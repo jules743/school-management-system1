@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="School Management System">
+  <title>School Management System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <aside class="sidebar">
+    <h2>🎓 School<span>Manager</span></h2>
+
+    <nav>
+      <a href="#dashboard" class="active">🏠 Dashboard</a>
+      <a href="#students">👨‍🎓 Students</a>
+      <a href="#teachers">👨‍🏫 Teachers</a>
+      <a href="#classes">🏫 Classes</a>
+      <a href="#attendance">📅 Attendance</a>
+      <a href="#exams">📝 Examinations</a>
+      <a href="#fees">💰 Fees</a>
+    </nav>
+
+    <p class="sidebar-footer">School Administration</p>
+  </aside>
+
+  <main class="main">
+
+    <header class="topbar">
+      <div>
+        <h1>School Management System</h1>
+        <p>Manage your school from one place.</p>
+      </div>
+      <div class="admin">👤 Administrator</div>
+    </header>
+
+    <section id="dashboard">
+      <h2>Dashboard Overview</h2>
+
+      <div class="stats">
+        <div class="stat">
+          <p>Total Students</p>
+          <h2 id="student-count">0</h2>
+        </div>
+
+        <div class="stat">
+          <p>Total Teachers</p>
+          <h2>0</h2>
+        </div>
+
+        <div class="stat">
+          <p>Total Classes</p>
+          <h2>0</h2>
+        </div>
+
+        <div class="stat">
+          <p>Attendance</p>
+          <h2>0%</h2>
+        </div>
+      </div>
+    </section>
+
+    <section id="students" class="panel">
+      <h2>Student Management</h2>
+      <p>Register and manage school students.</p>
+
+      <form id="student-form">
+        <input id="student-name" type="text"
+          placeholder="Student full name" required>
+
+        <input id="student-id" type="text"
+          placeholder="Student ID" required>
+
+        <select id="student-gender" required>
+          <option value="">Select gender</option>
+          <option>Male</option>
+          <option>Female</option>
+        </select>
+
+        <input id="student-class" type="text"
+          placeholder="Class (e.g. S6MCE)" required>
+
+        <button type="submit">Register Student</button>
+      </form>
+
+      <input id="student-search" type="search"
+        placeholder="Search students...">
+
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Student ID</th>
+              <th>Full Name</th>
+              <th>Gender</th>
+              <th>Class</th>
+            </tr>
+          </thead>
+          <tbody id="student-list">
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="teachers" class="panel">
+      <h2>Teacher Management</h2>
+      <p>Teacher management module coming soon.</p>
+    </section>
+
+    <section id="classes" class="panel">
+      <h2>Class Management</h2>
+      <p>Class management module coming soon.</p>
+    </section>
+
+    <section id="attendance" class="panel">
+      <h2>Attendance Management</h2>
+      <p>Student attendance module coming soon.</p>
+    </section>
+
+    <section id="exams" class="panel">
+      <h2>Examinations</h2>
+      <p>Examination and grading module coming soon.</p>
+    </section>
+
+    <section id="fees" class="panel">
+      <h2>Fees Management</h2>
+      <p>School fees module coming soon.</p>
+    </section>
+
+    <footer>
+      © 2026 School Management System
+    </footer>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
